@@ -1,0 +1,136 @@
+<section id="contact" class="py-24 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Column: Contact Context & Socials -->
+      <div class="lg:col-span-5">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-cyan text-xs font-semibold mb-3">
+          <span>GET IN TOUCH</span>
+        </div>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6">
+          Let's Build Something <span class="gradient-text-cyan-indigo">Remarkable</span>.
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+          Whether you're looking to integrate a grounded LLM/RAG pipeline, build a resilient full-stack web application, or discuss high-performance architectures, I'm ready to collaborate.
+        </p>
+
+        <!-- Direct Contact Info Cards -->
+        <div class="space-y-4 mb-8">
+          
+          <div class="glass-panel p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400 font-mono">Direct Email</div>
+              <a href="mailto:{{ data.profile.email }}" class="text-sm font-semibold text-white hover:text-cyan-300 transition-colors">
+                {{ data.profile.email }}
+              </a>
+            </div>
+          </div>
+
+          <div class="glass-panel p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400 font-mono">Location &amp; Timezone</div>
+              <div class="text-sm font-semibold text-white">
+                {{ data.profile.location }} (IST / UTC+5:30) • Remote Friendly
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Contact Form -->
+      <div class="lg:col-span-7">
+        <div class="glass-panel p-8 sm:p-10 border-white/10 relative">
+          
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Send a Message</h3>
+          <p class="text-slate-400 text-xs sm:text-sm mb-6">
+            Leave your contact details and project goals below. Handled directly by FastAPI backend.
+          </p>
+
+          <!-- Alert Container for AJAX Responses -->
+          <div id="contact-alert" class="hidden"></div>
+
+          <form id="contact-form" class="space-y-5">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name" class="block text-xs font-mono font-medium text-slate-300 mb-2">Your Name *</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  required 
+                  placeholder="Alex Mercer"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+                >
+              </div>
+
+              <div>
+                <label for="email" class="block text-xs font-mono font-medium text-slate-300 mb-2">Email Address *</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required 
+                  placeholder="alex@example.com"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+                >
+              </div>
+            </div>
+
+            <div>
+              <label for="subject" class="block text-xs font-mono font-medium text-slate-300 mb-2">Subject</label>
+              <input 
+                type="text" 
+                id="subject" 
+                name="subject" 
+                placeholder="RAG Architecture / Full-Stack Project Inquiry"
+                class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+              >
+            </div>
+
+            <div>
+              <label for="message" class="block text-xs font-mono font-medium text-slate-300 mb-2">Message *</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="4" 
+                required 
+                placeholder="Hi, I'd like to discuss building an AI-powered application or discussing an upcoming role..."
+                class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all resize-y"
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              id="contact-submit-btn" 
+              class="btn-primary w-full py-3.5 rounded-xl text-sm font-heading font-semibold text-white flex items-center justify-center gap-2 group"
+            >
+              <span>Transmit Message</span>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

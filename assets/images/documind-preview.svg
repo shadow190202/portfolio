@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1165 692" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#141a29"/>
+    </linearGradient>
+    <linearGradient id="geminiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e2433"/>
+      <stop offset="100%" stop-color="#151924"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1165" height="692" fill="url(#bgGrad)"/>
+
+  <!-- Ambient Glow Behind Dashboard -->
+  <circle cx="850" cy="180" r="220" fill="#3b82f6" opacity="0.2" filter="url(#glow)"/>
+  <circle cx="280" cy="500" r="200" fill="#8b5cf6" opacity="0.15" filter="url(#glow)"/>
+
+  <!-- Window Frame -->
+  <rect x="60" y="50" width="1045" height="592" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
+
+  <!-- Window Titlebar -->
+  <rect x="60" y="50" width="1045" height="54" rx="16" fill="#131722"/>
+  <rect x="60" y="85" width="1045" height="19" fill="#131722"/>
+  
+  <!-- Window Controls -->
+  <circle cx="95" cy="77" r="7" fill="#ef4444" opacity="0.85"/>
+  <circle cx="120" cy="77" r="7" fill="#f59e0b" opacity="0.85"/>
+  <circle cx="145" cy="77" r="7" fill="#10b981" opacity="0.85"/>
+
+  <!-- URL Bar -->
+  <rect x="190" y="63" width="540" height="28" rx="8" fill="#1d2230" stroke="rgba(255,255,255,0.08)"/>
+  <text x="210" y="82" fill="#94a3b8" font-family="-apple-system, Inter, sans-serif" font-size="13" font-weight="500">https://docu-mind-dun.vercel.app/assistant/rag-query</text>
+
+  <!-- Live Status Badge -->
+  <rect x="880" y="63" width="205" height="28" rx="14" fill="rgba(16, 185, 129, 0.15)" stroke="rgba(16, 185, 129, 0.35)" stroke-width="1"/>
+  <circle cx="900" cy="77" r="4.5" fill="#10b981"/>
+  <text x="915" y="82" fill="#10b981" font-family="-apple-system, Inter, sans-serif" font-size="12" font-weight="700">570+ TESTS PASSED</text>
+
+  <!-- Sidebar (Left Column) -->
+  <rect x="85" y="130" width="280" height="485" rx="12" fill="#131722" stroke="rgba(255,255,255,0.06)"/>
+  
+  <text x="110" y="172" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="800">DocuMind</text>
+  <text x="110" y="194" fill="#64748b" font-family="Inter, sans-serif" font-size="13">Next.js 14 App Router • Clerk Auth</text>
+
+  <!-- Vector Collection Item -->
+  <rect x="105" y="230" width="240" height="56" rx="8" fill="rgba(59, 130, 246, 0.18)" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="125" y="255" fill="#93c5fd" font-family="Inter, sans-serif" font-size="14" font-weight="600">Knowledge Base</text>
+  <text x="125" y="274" fill="#64748b" font-family="Inter, sans-serif" font-size="11.5">pgvector • 768-dim embeddings</text>
+
+  <rect x="105" y="302" width="240" height="48" rx="8" fill="#191e2b"/>
+  <text x="125" y="332" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">Server-Side RBAC Security</text>
+
+  <rect x="105" y="362" width="240" height="48" rx="8" fill="#191e2b"/>
+  <text x="125" y="392" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">Magic-Byte Binary Ingestion</text>
+
+  <rect x="105" y="422" width="240" height="48" rx="8" fill="#191e2b"/>
+  <text x="125" y="452" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">Executive Summaries &amp; Cache</text>
+
+  <!-- Main RAG Query & Chat Panel -->
+  <rect x="385" y="130" width="695" height="485" rx="12" fill="#151924" stroke="rgba(255,255,255,0.06)"/>
+
+  <!-- Search / Prompt Input -->
+  <rect x="415" y="160" width="635" height="58" rx="10" fill="#0d111a" stroke="rgba(255,255,255,0.14)"/>
+  <text x="440" y="196" fill="#f8fafc" font-family="Inter, sans-serif" font-size="15">Semantic retrieval query over multi-page PDF documents...</text>
+  <rect x="965" y="171" width="70" height="36" rx="8" fill="url(#geminiGrad)"/>
+  <text x="982" y="194" fill="#ffffff" font-family="Inter, sans-serif" font-size="13" font-weight="700">RAG</text>
+
+  <!-- Query Pipeline Result Card -->
+  <rect x="415" y="245" width="635" height="240" rx="10" fill="#1a202c" stroke="rgba(255,255,255,0.08)"/>
+  
+  <rect x="435" y="270" width="200" height="26" rx="6" fill="rgba(59, 130, 246, 0.25)"/>
+  <text x="448" y="288" fill="#60a5fa" font-family="Inter, sans-serif" font-size="12" font-weight="700">GEMINI 2.5 FLASH RAG</text>
+
+  <text x="660" y="288" fill="#10b981" font-family="Inter, sans-serif" font-size="12.5" font-weight="600">Cosine Distance Match: 0.9412 (&lt;=&gt;)</text>
+
+  <text x="435" y="328" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="17" font-weight="600">Grounded Context Synthesis with Verifiable Citations</text>
+  
+  <text x="435" y="360" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13.5">
+    Retrieved 4 chunks using Drizzle ORM over PostgreSQL pgvector cosine similarity index.
+  </text>
+  <text x="435" y="385" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13.5">
+    Token-budgeted context assembly • Page 3 attribution • Hallucination-resistant fallback.
+  </text>
+
+  <!-- Telemetry Bar -->
+  <rect x="435" y="420" width="595" height="24" rx="6" fill="#0d111a"/>
+  <rect x="435" y="420" width="460" height="24" rx="6" fill="url(#geminiGrad)" opacity="0.85"/>
+  <text x="448" y="437" fill="#ffffff" font-family="Inter, sans-serif" font-size="11.5" font-weight="700">Latency: 142ms • Context: 3.2k tokens • Embedding: gemini-embedding-001</text>
+
+  <!-- Bottom Badges -->
+  <rect x="415" y="515" width="135" height="38" rx="19" fill="#1e2433" stroke="rgba(255,255,255,0.08)"/>
+  <text x="435" y="539" fill="#cbd5e1" font-family="Inter, sans-serif" font-size="12.5" font-weight="500">Next.js 14</text>
+
+  <rect x="565" y="515" width="160" height="38" rx="19" fill="#1e2433" stroke="rgba(255,255,255,0.08)"/>
+  <text x="585" y="539" fill="#cbd5e1" font-family="Inter, sans-serif" font-size="12.5" font-weight="500">PostgreSQL pgvector</text>
+
+  <rect x="740" y="515" width="145" height="38" rx="19" fill="#1e2433" stroke="rgba(255,255,255,0.08)"/>
+  <text x="760" y="539" fill="#cbd5e1" font-family="Inter, sans-serif" font-size="12.5" font-weight="500">Gemini 2.5 Flash</text>
+
+  <rect x="900" y="515" width="150" height="38" rx="19" fill="#1e2433" stroke="rgba(255,255,255,0.08)"/>
+  <text x="920" y="539" fill="#cbd5e1" font-family="Inter, sans-serif" font-size="12.5" font-weight="500">570+ Tests Pass</text>
+</svg>

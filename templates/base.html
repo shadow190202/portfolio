@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ data.profile.name }} | {{ data.profile.title }}</title>
+  <meta name="description" content="{{ data.profile.tagline }}">
+  
+  <!-- Favicon / Tab Icon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/documind-preview.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            slate: {
+              850: '#131722',
+              925: '#0b0f19',
+              950: '#080b12',
+            },
+            cyan: {
+              450: '#22d3ee',
+            }
+          },
+          fontFamily: {
+            heading: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Theme Stylesheet (Dark Slate Texture Theme) -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="min-h-screen text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-black">
+  
+  <!-- Navigation Header -->
+  {% include "components/nav.html" %}
+
+  <!-- Main Content Body -->
+  <main class="flex-grow">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  {% include "components/footer.html" %}
+
+  <!-- Client Script -->
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
