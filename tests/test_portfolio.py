@@ -1,4 +1,4 @@
-"""Automated tests for FastAPI Developer Portfolio."""
+"""Automated tests for Shreyansh Sahu Developer Portfolio."""
 import sys
 from pathlib import Path
 import unittest
@@ -25,16 +25,21 @@ class TestPortfolioApp(unittest.TestCase):
         self.assertEqual(data["status"], "healthy")
         self.assertIn("timestamp", data)
 
-    def test_home_page_renders(self):
-        """Verify home page renders HTML with stylesheet, portrait, and project details."""
+    def test_home_page_renders_shreyansh_details(self):
+        """Verify home page renders HTML with Shreyansh Sahu's exact details."""
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
         self.assertIn("text/html", response.headers["content-type"])
         html = response.text
-        self.assertIn("/static/css/style.css", html)
-        self.assertIn("my-image-hero-section.png", html)
+        self.assertIn("Shreyansh Sahu", html)
+        self.assertIn("shreyanshsahu1319@gmail.com", html)
+        self.assertIn("+91-9752387516", html)
+        self.assertIn("Indore, Madhya Pradesh", html)
         self.assertIn("DocuMind", html)
-        self.assertIn("570+ Verified Tests", html)
+        self.assertIn("Ypsilon IT Solutions", html)
+        self.assertIn("Lakshmi Narain College of Technology", html)
+        self.assertIn("7.70", html)
+        self.assertIn("570+ Automated Tests Passed", html)
 
     def test_css_references_hero_background_theme(self):
         """Verify style.css embeds hero-background-img.jpg as theme background."""
@@ -42,36 +47,38 @@ class TestPortfolioApp(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("hero-background-img.jpg", response.text)
 
-    def test_projects_endpoint(self):
-        """Verify /api/projects returns structured project data."""
+    def test_projects_endpoint_single_flagship(self):
+        """Verify /api/projects returns exactly one flagship project (DocuMind)."""
         response = self.client.get("/api/projects")
         self.assertEqual(response.status_code, 200)
         data = response.json()
         self.assertTrue(data["success"])
-        self.assertGreater(data["count"], 0)
+        self.assertEqual(data["count"], 1)
         self.assertEqual(data["projects"][0]["id"], "documind")
+        self.assertEqual(data["projects"][0]["github_url"], "https://github.com/shadow190202/DocuMind")
+        self.assertEqual(data["projects"][0]["live_url"], "https://docu-mind-dun.vercel.app")
 
     def test_contact_submission_success(self):
         """Verify contact form submission handles valid input."""
         payload = {
-            "name": "Jane Doe",
-            "email": "jane@example.com",
-            "subject": "AI Project Collaboration",
-            "message": "We would love to discuss a project with you."
+            "name": "Hiring Manager",
+            "email": "hiring@innovatech.com",
+            "subject": "Full-Stack Web Developer Opportunity",
+            "message": "We reviewed your DocuMind project and would like to invite you for an interview."
         }
         response = self.client.post("/api/contact", data=payload)
         self.assertEqual(response.status_code, 200)
         data = response.json()
         self.assertTrue(data["success"])
-        self.assertIn("Thank you, Jane Doe", data["message"])
+        self.assertIn("Thank you, Hiring Manager", data["message"])
 
     def test_contact_submission_invalid_email(self):
         """Verify contact form rejects invalid email addresses."""
         payload = {
-            "name": "Jane Doe",
-            "email": "not-an-email",
-            "subject": "Hello",
-            "message": "Testing invalid email"
+            "name": "Test User",
+            "email": "invalid-email-address",
+            "subject": "Inquiry",
+            "message": "Testing validation"
         }
         response = self.client.post("/api/contact", data=payload)
         self.assertEqual(response.status_code, 400)

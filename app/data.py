@@ -1,177 +1,174 @@
-"""Portfolio content configuration and structured dataset.
+"""Portfolio content configuration for Shreyansh Sahu.
 
-Easily update your bio, projects, skills, and experience in this central module.
+Centralized dataset with personal details, flagship DocuMind project, skills, and experience.
 """
 
 PORTFOLIO_DATA = {
     "profile": {
-        "name": "Sahus",
-        "title": "Full-Stack AI & Software Engineer",
-        "badge": "Available for High-Impact Roles & Consulting",
-        "tagline": "Architecting resilient full-stack systems, modern RAG pipelines, and high-performance cloud applications.",
+        "name": "Shreyansh Sahu",
+        "initials": "SS",
+        "title": "Full-Stack Web Developer & AI Engineer",
+        "subtitle": "MCA Student • Specialized in Next.js, PostgreSQL (pgvector) & Google Gemini AI",
+        "badge": "Available for Full-Stack & AI Engineering Roles",
+        "tagline": "Building intelligent, scalable web applications and production-ready RAG workflows.",
         "bio": (
-            "I design and build production-grade web applications and AI-driven platforms with a focus on "
-            "sub-millisecond latency, verified correctness, and intuitive user experiences. Specializing in "
-            "modern Python/FastAPI backends, Next.js frontends, and enterprise-scale RAG architectures."
+            "Motivated Full-Stack Web Developer and MCA student with hands-on experience building scalable web applications "
+            "and AI-powered solutions using Next.js, React, Node.js, PostgreSQL (pgvector), and Google Gemini AI. "
+            "Skilled in component architecture, RAG workflows, vector similarity search, and clean coding principles. "
+            "Passionate about building intelligent, production-ready applications."
         ),
-        "location": "India",
-        "email": "contact@portfolio.dev",
+        "location": "Indore, Madhya Pradesh, India",
+        "phone": "+91-9752387516",
+        "email": "shreyanshsahu1319@gmail.com",
         "hero_image": "/assets/images/my-image-hero-section.png",
         "hero_background": "/assets/images/hero-background-img.jpg",
         "social": {
-            "github": "https://github.com",
-            "linkedin": "https://linkedin.com",
-            "twitter": "https://twitter.com",
-            "email": "mailto:contact@portfolio.dev"
+            "github": "https://github.com/shadow190202",
+            "linkedin": "https://linkedin.com/in/shreyansh-sahu-9503a0325",
+            "email": "mailto:shreyanshsahu1319@gmail.com",
+            "phone": "tel:+919752387516"
         },
         "stats": [
             {"value": "570+", "label": "Automated Tests Passed"},
-            {"value": "142ms", "label": "P99 RAG Pipeline Latency"},
-            {"value": "99.9%", "label": "Production Reliability"},
-            {"value": "4+", "label": "Years Building Web & AI Systems"}
+            {"value": "768-dim", "label": "Gemini Vector Search"},
+            {"value": "142ms", "label": "P99 RAG Query Latency"},
+            {"value": "7.70", "label": "MCA Academic CGPA"}
         ]
     },
     "projects": [
         {
             "id": "documind",
-            "title": "DocuMind — Enterprise RAG Assistant",
-            "category": "AI / Full-Stack",
+            "title": "DocuMind — AI Document Intelligence & Knowledge Assistant",
+            "category": "AI / Full-Stack Enterprise Platform",
             "featured": True,
-            "badge": "Featured Project",
+            "badge": "Flagship Production System",
             "summary": (
-                "A full-stack RAG assistant featuring semantic retrieval over multi-page PDF documents, "
-                "pgvector 768-dim embeddings, server-side RBAC, and grounded Gemini 2.5 Flash synthesis "
-                "with verifiable page citations."
+                "An end-to-end AI document intelligence platform built with Next.js 14 App Router, React, and Node.js. "
+                "Enables multi-format document ingestion (PDF, DOCX, TXT, CSV) with binary magic-byte validation, "
+                "768-dimensional Google Gemini vector search indexing in PostgreSQL via pgvector, and grounded conversational "
+                "assistance with verifiable page-level citations."
             ),
             "preview_image": "/assets/images/documind-preview.svg",
-            "live_url": "https://docu-mind-dun.vercel.app/assistant/rag-query",
-            "github_url": "https://github.com",
+            "live_url": "https://docu-mind-dun.vercel.app",
+            "github_url": "https://github.com/shadow190202/DocuMind",
             "highlights": [
-                "Grounded context synthesis with hallucination-resistant fallback & page citations",
-                "pgvector cosine similarity indexing with sub-150ms query turnaround",
-                "Clerk authentication integrated with strict server-side RBAC and magic-byte binary validation",
-                "Extensive test suite with over 570 verified end-to-end and unit tests"
+                "Architected a full-stack document intelligence platform using Next.js 14 App Router, React, and Node.js, enabling multi-format document ingestion (PDF, DOCX, TXT, CSV) with binary magic-byte validation and physical page attribution.",
+                "Implemented an end-to-end vector search pipeline generating 768-dimensional embeddings via Google Gemini (gemini-embedding-001) and indexing chunks in PostgreSQL using pgvector cosine distance search (<=>) with Drizzle ORM.",
+                "Engineered a grounded conversational RAG assistant using Google Gemini 2.5 Flash, featuring token-budgeted context assembly, verifiable page-level source citations, and hallucination-resistant fallback responses.",
+                "Built automated document summarization (executive summaries, bullet points, key takeaways) with database caching to eliminate redundant AI calls, alongside structured side-by-side document comparison analytics.",
+                "Secured application with Clerk authentication, PostgreSQL server-side role-based access control (RBAC), multi-user document permissions (read, write, admin), IDOR protection, admin telemetry dashboard, and 570+ automated tests."
             ],
-            "tags": ["Next.js 14", "Gemini 2.5 Flash", "PostgreSQL", "pgvector", "Drizzle ORM", "Clerk Auth", "Tailwind CSS"]
-        },
-        {
-            "id": "neural-flow",
-            "title": "NeuralFlow — Real-Time Agentic Orchestrator",
-            "category": "Cloud & AI",
-            "featured": True,
-            "badge": "High Performance",
-            "summary": (
-                "Event-driven workflow orchestration engine coordinating multi-agent LLM systems with "
-                "dynamic tool dispatch, state persistence, and distributed Redis event queuing."
-            ),
-            "preview_image": None,
-            "live_url": "#",
-            "github_url": "https://github.com",
-            "highlights": [
-                "Dynamic streaming execution with WebSocket bi-directional updates",
-                "Distributed task scheduling backed by Celery and Redis Streams",
-                "Automated checkpointing and rollbacks for multi-turn LLM reasoning"
+            "tags": [
+                "Next.js 14 (App Router)",
+                "React",
+                "Node.js",
+                "PostgreSQL",
+                "pgvector",
+                "Google Gemini 2.5 Flash",
+                "gemini-embedding-001",
+                "Drizzle ORM",
+                "Docker",
+                "Clerk Auth",
+                "Tailwind CSS",
+                "Vercel"
             ],
-            "tags": ["Python", "FastAPI", "Redis", "Docker", "WebSockets", "Pydantic"]
-        },
-        {
-            "id": "pulse-metrics",
-            "title": "PulseMetrics — Cloud Telemetry Dashboard",
-            "category": "Infrastructure",
-            "featured": False,
-            "badge": "DevOps / Infra",
-            "summary": (
-                "High-throughput observability pipeline collecting time-series system metrics and log streams, "
-                "rendering interactive analytics with millisecond query speeds."
-            ),
-            "preview_image": None,
-            "live_url": "#",
-            "github_url": "https://github.com",
-            "highlights": [
-                "Ingestion rate exceeding 25,000 events/sec via async worker pool",
-                "Dynamic anomaly detection alerting via webhooks and Slack integrations",
-                "Modular glassmorphism UI with real-time SVG sparkline charts"
-            ],
-            "tags": ["FastAPI", "TimescaleDB", "Chart.js", "Docker", "Tailwind CSS"]
+            "architecture_specs": [
+                {"label": "Embedding Model", "value": "Google Gemini (gemini-embedding-001, 768-dim)"},
+                {"label": "Inference Engine", "value": "Google Gemini 2.5 Flash"},
+                {"label": "Vector Database", "value": "PostgreSQL with pgvector extension"},
+                {"label": "ORM & Migrations", "value": "Drizzle ORM"},
+                {"label": "Ingestion Formats", "value": "PDF, DOCX, TXT, CSV with Magic-Byte validation"},
+                {"label": "Security Model", "value": "Clerk Auth + Server-side RBAC & IDOR Guard"},
+                {"label": "Test Coverage", "value": "570+ Unit & E2E Automated Tests Passed"}
+            ]
         }
     ],
     "skills": [
         {
-            "group": "AI & Machine Learning",
+            "group": "AI & Generative AI",
             "icon": "brain",
             "skills": [
-                {"name": "Gemini API & LLMs", "level": "Expert"},
-                {"name": "RAG Architecture", "level": "Expert"},
-                {"name": "pgvector & Vector Search", "level": "Advanced"},
-                {"name": "Embeddings & Semantic Search", "level": "Expert"},
-                {"name": "Context Engineering", "level": "Advanced"}
+                "Retrieval-Augmented Generation (RAG)",
+                "Vector Embeddings (768-dim)",
+                "Google Gemini API (2.5 Flash)",
+                "Semantic & Cosine Search (<=>)",
+                "Document Summarization & Analytics"
             ]
         },
         {
-            "group": "Backend Engineering",
+            "group": "Backend & Databases",
             "icon": "server",
             "skills": [
-                {"name": "Python & FastAPI", "level": "Expert"},
-                {"name": "PostgreSQL & Drizzle ORM", "level": "Advanced"},
-                {"name": "Redis & Caching", "level": "Advanced"},
-                {"name": "RESTful & WebSocket APIs", "level": "Expert"},
-                {"name": "RBAC & Auth Architecture", "level": "Advanced"}
+                "Node.js",
+                "PostgreSQL & pgvector",
+                "Drizzle ORM",
+                "Python",
+                "RESTful APIs Architecture",
+                "Server-Side RBAC & Security"
             ]
         },
         {
-            "group": "Frontend & Design",
+            "group": "Frontend Engineering",
             "icon": "layout",
             "skills": [
-                {"name": "Next.js & React", "level": "Advanced"},
-                {"name": "Tailwind CSS & Glassmorphism", "level": "Expert"},
-                {"name": "HTML5 & Modern CSS", "level": "Expert"},
-                {"name": "JavaScript / TypeScript", "level": "Advanced"},
-                {"name": "Responsive & A11y UI", "level": "Expert"}
+                "Next.js (App Router)",
+                "React.js",
+                "Tailwind CSS",
+                "JavaScript (ES6+)",
+                "HTML5 & CSS3",
+                "Responsive Web Design"
             ]
         },
         {
-            "group": "DevOps & Cloud",
+            "group": "Tools, DevOps & Core CS",
             "icon": "cloud",
             "skills": [
-                {"name": "Docker & Containerization", "level": "Advanced"},
-                {"name": "Git & CI/CD Pipelines", "level": "Expert"},
-                {"name": "Vercel & Cloud Deployments", "level": "Advanced"},
-                {"name": "Automated Testing (570+ Suites)", "level": "Expert"},
-                {"name": "Linux Environments", "level": "Advanced"}
+                "Docker",
+                "Git & GitHub",
+                "Clerk Auth",
+                "Vercel Deployment",
+                "Postman & VS Code",
+                "OOP, DBMS & OS Fundamentals",
+                "Computer Networks & Web Security"
             ]
         }
     ],
-    "timeline": [
+    "experience": [
         {
-            "year": "2024 — Present",
-            "role": "Senior AI & Full-Stack Solutions Engineer",
-            "company": "Independent Innovations & Enterprise Clients",
-            "description": (
-                "Leading architectural design for production generative AI systems, modernizing cloud applications, "
-                "and implementing robust RAG infrastructure including DocuMind. Engineered end-to-end vector retrieval pipelines "
-                "and strict validation test suites."
-            ),
-            "tags": ["FastAPI", "Next.js", "Gemini 2.5", "pgvector", "PostgreSQL"]
+            "role": "Python Intern",
+            "company": "Ypsilon IT Solutions Pvt. Ltd.",
+            "location": "Bhopal, India",
+            "duration": "May 2025",
+            "type": "Internship",
+            "bullets": [
+                "Completed hands-on Python development training focused on scripting, debugging, and logical problem-solving using clean coding practices.",
+                "Developed Python programs to strengthen programming fundamentals while applying modular design and debugging techniques.",
+                "Collaborated with mentors during practical development exercises, enhancing analytical thinking and software development skills."
+            ],
+            "tags": ["Python", "Scripting", "Debugging", "Modular Design", "Problem Solving"]
+        }
+    ],
+    "education": [
+        {
+            "degree": "Master of Computer Applications (MCA)",
+            "institution": "Lakshmi Narain College of Technology, Bhopal",
+            "duration": "2024 — Present",
+            "score": "CGPA: 7.70",
+            "highlights": "Focused on Advanced Web Engineering, Distributed Systems, Database Management, and Artificial Intelligence."
         },
         {
-            "year": "2022 — 2024",
-            "role": "Full-Stack Web Developer",
-            "company": "Technology Studio",
-            "description": (
-                "Developed scalable client-facing web applications, responsive dashboards, and optimized API layers. "
-                "Spearheaded database migrations, auth flow hardening, and microservice integration."
-            ),
-            "tags": ["Python", "JavaScript", "REST APIs", "Tailwind CSS", "Docker"]
-        },
+            "degree": "Bachelor of Science (Computer Science)",
+            "institution": "Rajeev Gandhi College, Bhopal",
+            "duration": "2021 — 2024",
+            "score": "CGPA: 7.50",
+            "highlights": "Strong grounding in Computer Science fundamentals, Object-Oriented Programming, Data Structures, and Software Development."
+        }
+    ],
+    "certifications": [
         {
-            "year": "2020 — 2022",
-            "role": "B.Tech in Computer Science & Engineering",
-            "company": "University",
-            "description": (
-                "Deep grounding in Data Structures, Algorithms, Distributed Computing, Database Management Systems, "
-                "and Computer Networks."
-            ),
-            "tags": ["Algorithms", "Distributed Systems", "DBMS", "Operating Systems"]
+            "title": "Python Internship Certification",
+            "issuer": "Ypsilon IT Solutions Pvt. Ltd.",
+            "description": "Certified completion of hands-on Python programming, debugging, and software development methodologies."
         }
     ]
 }

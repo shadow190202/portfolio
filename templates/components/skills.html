@@ -4,13 +4,13 @@
     <!-- Section Header -->
     <div class="text-center max-w-3xl mx-auto mb-16">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-cyan text-xs font-semibold mb-3">
-        <span>CORE PROFICIENCIES</span>
+        <span>TECHNICAL SKILLS</span>
       </div>
       <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">
-        Technical Skills &amp; <span class="gradient-text-cyan-indigo">Engineering Arsenal</span>
+        Engineering Expertise &amp; <span class="gradient-text-cyan-indigo">Core Stack</span>
       </h2>
       <p class="text-slate-400 text-sm sm:text-base">
-        A pragmatic foundation bridging modern AI model integrations, resilient backend architectures, and high-performance frontend interfaces.
+        Mastery across full-stack component architecture, modern generative AI integration, database performance, and clean coding standards.
       </p>
     </div>
 
@@ -47,13 +47,13 @@
           </div>
 
           <!-- Skills List -->
-          <ul class="space-y-3">
-            {% for sk in category.skills %}
-            <li class="flex items-center justify-between text-xs sm:text-sm">
-              <span class="text-slate-300 font-medium">{{ sk.name }}</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-semibold {% if sk.level == 'Expert' %}bg-cyan-500/15 text-cyan-300 border border-cyan-500/30{% else %}bg-slate-800 text-slate-400 border border-white/5{% endif %}">
-                {{ sk.level }}
-              </span>
+          <ul class="space-y-2.5">
+            {% for skill in category.skills %}
+            <li class="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
+              <svg class="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{{ skill }}</span>
             </li>
             {% endfor %}
           </ul>

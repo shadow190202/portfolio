@@ -9,15 +9,16 @@
           <span>GET IN TOUCH</span>
         </div>
         <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6">
-          Let's Build Something <span class="gradient-text-cyan-indigo">Remarkable</span>.
+          Let's Build Something <span class="gradient-text-cyan-indigo">Intelligent</span>.
         </h2>
         <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-          Whether you're looking to integrate a grounded LLM/RAG pipeline, build a resilient full-stack web application, or discuss high-performance architectures, I'm ready to collaborate.
+          Whether you're looking to hire a Full-Stack Web Developer, integrate production RAG / Gemini AI pipelines, or discuss opportunities, I'd love to connect.
         </p>
 
         <!-- Direct Contact Info Cards -->
         <div class="space-y-4 mb-8">
           
+          <!-- Email Card -->
           <div class="glass-panel p-4 flex items-center gap-4">
             <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -25,13 +26,29 @@
               </svg>
             </div>
             <div>
-              <div class="text-xs text-slate-400 font-mono">Direct Email</div>
+              <div class="text-xs text-slate-400 font-mono">Email Address</div>
               <a href="mailto:{{ data.profile.email }}" class="text-sm font-semibold text-white hover:text-cyan-300 transition-colors">
                 {{ data.profile.email }}
               </a>
             </div>
           </div>
 
+          <!-- Phone Card -->
+          <div class="glass-panel p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs text-slate-400 font-mono">Phone &amp; WhatsApp</div>
+              <a href="tel:{{ data.profile.phone }}" class="text-sm font-semibold text-white hover:text-emerald-300 transition-colors">
+                {{ data.profile.phone }}
+              </a>
+            </div>
+          </div>
+
+          <!-- Location Card -->
           <div class="glass-panel p-4 flex items-center gap-4">
             <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,9 +57,9 @@
               </svg>
             </div>
             <div>
-              <div class="text-xs text-slate-400 font-mono">Location &amp; Timezone</div>
+              <div class="text-xs text-slate-400 font-mono">Location &amp; Openness</div>
               <div class="text-sm font-semibold text-white">
-                {{ data.profile.location }} (IST / UTC+5:30) • Remote Friendly
+                {{ data.profile.location }} • Remote &amp; On-Site
               </div>
             </div>
           </div>
@@ -55,9 +72,9 @@
       <div class="lg:col-span-7">
         <div class="glass-panel p-8 sm:p-10 border-white/10 relative">
           
-          <h3 class="font-heading font-bold text-xl text-white mb-2">Send a Message</h3>
+          <h3 class="font-heading font-bold text-xl text-white mb-2">Send Direct Inquiry</h3>
           <p class="text-slate-400 text-xs sm:text-sm mb-6">
-            Leave your contact details and project goals below. Handled directly by FastAPI backend.
+            Feel free to send a message. Handled immediately by the FastAPI server.
           </p>
 
           <!-- Alert Container for AJAX Responses -->
@@ -73,7 +90,7 @@
                   id="name" 
                   name="name" 
                   required 
-                  placeholder="Alex Mercer"
+                  placeholder="Recruiter / Collaborator Name"
                   class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
                 >
               </div>
@@ -85,7 +102,7 @@
                   id="email" 
                   name="email" 
                   required 
-                  placeholder="alex@example.com"
+                  placeholder="name@company.com"
                   class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
                 >
               </div>
@@ -97,7 +114,7 @@
                 type="text" 
                 id="subject" 
                 name="subject" 
-                placeholder="RAG Architecture / Full-Stack Project Inquiry"
+                placeholder="Full-Stack / AI Opportunity Inquiry"
                 class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
               >
             </div>
@@ -109,7 +126,7 @@
                 name="message" 
                 rows="4" 
                 required 
-                placeholder="Hi, I'd like to discuss building an AI-powered application or discussing an upcoming role..."
+                placeholder="Hi Shreyansh, I saw your work on DocuMind and would like to discuss..."
                 class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all resize-y"
               ></textarea>
             </div>
