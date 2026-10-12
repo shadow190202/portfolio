@@ -19,15 +19,21 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Ensure static directories exist
-settings.STATIC_DIR.mkdir(parents=True, exist_ok=True)
-(settings.STATIC_DIR / "css").mkdir(parents=True, exist_ok=True)
-(settings.STATIC_DIR / "js").mkdir(parents=True, exist_ok=True)
-settings.TEMPLATES_DIR.mkdir(parents=True, exist_ok=True)
+# Ensure static directories exist (safely handled for serverless read-only runtimes)
+try:
+    settings.STATIC_DIR.mkdir(parents=True, exist_ok=True)
+    (settings.STATIC_DIR / "css").mkdir(parents=True, exist_ok=True)
+    (settings.STATIC_DIR / "js").mkdir(parents=True, exist_ok=True)
+    settings.TEMPLATES_DIR.mkdir(parents=True, exist_ok=True)
+except Exception:
+    pass
 
 # Mount static and assets files
-app.mount("/assets", StaticFiles(directory=str(settings.ASSETS_DIR)), name="assets")
-app.mount("/static", StaticFiles(directory=str(settings.STATIC_DIR)), name="static")
+if settings.ASSETS_DIR.exists():
+    app.mount("/assets", StaticFiles(directory=str(settings.ASSETS_DIR)), name="assets")
+
+if settings.STATIC_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(settings.STATIC_DIR)), name="static")
 
 templates = Jinja2Templates(directory=str(settings.TEMPLATES_DIR))
 

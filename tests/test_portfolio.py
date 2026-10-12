@@ -183,6 +183,28 @@ class TestPortfolioApp(unittest.TestCase):
         self.assertIn("curtain-lift", css_response.text)
         self.assertIn(".btn-primary", css_response.text)
 
+    def test_vercel_serverless_entrypoint_and_config(self):
+        """Verify Vercel serverless entrypoint in api/index.py and vercel.json configuration."""
+        import json
+        from api.index import app as vercel_app
+        vercel_client = TestClient(vercel_app)
+
+        health_resp = vercel_client.get("/api/health")
+        self.assertEqual(health_resp.status_code, 200)
+        self.assertEqual(health_resp.json()["status"], "healthy")
+
+        home_resp = vercel_client.get("/")
+        self.assertEqual(home_resp.status_code, 200)
+        self.assertIn("Shreyansh Sahu", home_resp.text)
+
+        vercel_json_path = BASE_DIR / "vercel.json"
+        self.assertTrue(vercel_json_path.exists())
+        with open(vercel_json_path, "r", encoding="utf-8") as f:
+            vercel_config = json.load(f)
+        self.assertEqual(vercel_config["version"], 2)
+        self.assertEqual(vercel_config["builds"][0]["src"], "api/index.py")
+        self.assertEqual(vercel_config["builds"][0]["use"], "@vercel/python")
+
 
 if __name__ == "__main__":
     unittest.main()
