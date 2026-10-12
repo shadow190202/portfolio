@@ -1,5 +1,5 @@
 // ==========================================================================
-// Portfolio JavaScript Interactions
+// Portfolio JavaScript Interactions & Scroll Animations
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,7 +7,48 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initScrollSpy();
   initCardAmbientGlow();
+  initScrollReveal();
 });
+
+/**
+ * Scroll-Driven Reveal Animations
+ */
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.reveal-on-scroll');
+  if (!elements.length) return;
+
+  // Respect user preference for reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    elements.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1,
+    }
+  );
+
+  elements.forEach(el => {
+    // If element is already in initial viewport, reveal immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('is-visible');
+    } else {
+      observer.observe(el);
+    }
+  });
+}
 
 /**
  * Mobile Drawer Menu Toggle
@@ -49,7 +90,7 @@ function initContactForm() {
     const originalBtnText = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = `
-      <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-black inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
       </svg>
@@ -103,9 +144,9 @@ function showAlert(container, type, message) {
   if (!container) return;
 
   const isSuccess = type === 'success';
-  const bgColor = isSuccess ? 'bg-emerald-950/80' : 'bg-red-950/80';
-  const borderColor = isSuccess ? 'border-emerald-500/40' : 'border-red-500/40';
-  const textColor = isSuccess ? 'text-emerald-300' : 'text-red-300';
+  const bgColor = isSuccess ? 'bg-slate-900' : 'bg-red-950/80';
+  const borderColor = isSuccess ? 'border-white/20' : 'border-red-500/40';
+  const textColor = isSuccess ? 'text-slate-100' : 'text-red-300';
   const icon = isSuccess
     ? `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />`
     : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />`;
@@ -133,7 +174,7 @@ function initScrollSpy() {
 
   window.addEventListener('scroll', () => {
     let current = '';
-    const scrollPosition = window.pageYOffset + 120;
+    const scrollPosition = window.pageYOffset + 140;
 
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
@@ -144,11 +185,13 @@ function initScrollSpy() {
     });
 
     navLinks.forEach((link) => {
-      link.classList.remove('text-cyan-400', 'font-semibold');
-      link.classList.add('text-slate-300');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('text-cyan-400', 'font-semibold');
-        link.classList.remove('text-slate-300');
+      const href = link.getAttribute('href');
+      if (href && href.includes(`#${current}`) && current !== '') {
+        link.classList.add('text-white', 'font-semibold');
+        link.classList.remove('text-slate-400');
+      } else if (href && href.startsWith('/#')) {
+        link.classList.remove('text-white', 'font-semibold');
+        link.classList.add('text-slate-400');
       }
     });
   });

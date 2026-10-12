@@ -1,6 +1,6 @@
 """Portfolio content configuration for Shreyansh Sahu.
 
-Centralized dataset with personal details, projects (DocuMind & Expenses Tracker), skills, and experience.
+Centralized dataset with personal details, projects (DocuMind & Expenses Tracker), skills, and education.
 """
 
 PORTFOLIO_DATA = {
@@ -8,12 +8,12 @@ PORTFOLIO_DATA = {
         "name": "Shreyansh Sahu",
         "initials": "SS",
         "title": "Full-Stack Web Developer & AI Engineer",
-        "subtitle": "MCA Student • Specialized in Next.js, PostgreSQL (pgvector) & Google Gemini AI",
-        "badge": "Available for Full-Stack & AI Engineering Roles",
-        "tagline": "Building intelligent, scalable web applications, financial dashboards, and production RAG workflows.",
+        "subtitle": "MCA Student • Specialized in Next.js, PostgreSQL & AI Solutions",
+        "badge": "Available for Full-Stack & AI Roles",
+        "tagline": "Building intelligent, scalable web applications, financial dashboards, and modern architectures.",
         "bio": (
             "Motivated Full-Stack Web Developer and MCA student with hands-on experience building scalable web applications "
-            "and AI-powered solutions using Next.js, React, Node.js, PostgreSQL (pgvector), and Google Gemini AI. "
+            "and AI-powered solutions using Next.js, React, Node.js, PostgreSQL (pgvector), and modern AI architectures. "
             "Skilled in component architecture, RAG workflows, vector similarity search, and clean coding principles. "
             "Passionate about building intelligent, production-ready applications."
         ),
@@ -28,11 +28,34 @@ PORTFOLIO_DATA = {
             "email": "mailto:shreyanshsahu1319@gmail.com",
             "phone": "tel:+919752387516"
         },
-        "stats": [
-            {"value": "570+", "label": "Automated Tests Passed"},
-            {"value": "768-dim", "label": "Gemini Vector Search"},
-            {"value": "142ms", "label": "P99 RAG Query Latency"},
-            {"value": "7.70", "label": "MCA Academic CGPA"}
+        "quick_highlights": [
+            {
+                "tag": "Featured Live App",
+                "title": "DocuMind",
+                "short_desc": "AI Document Intelligence & RAG platform with multi-format ingestion and citations.",
+                "link": "https://docu-mind-dun.vercel.app",
+                "link_text": "Launch Live Demo",
+                "is_external": True,
+                "badge_color": "amber"
+            },
+            {
+                "tag": "Full-Stack Project",
+                "title": "Expenses Tracker",
+                "short_desc": "Personal budget management with Next.js 14, Drizzle ORM, Clerk, and Recharts.",
+                "link": "https://github.com/shadow190202/Expenses-Tracker",
+                "link_text": "View on GitHub",
+                "is_external": True,
+                "badge_color": "silver"
+            },
+            {
+                "tag": "Academic Qualifications",
+                "title": "MCA • LNCT Bhopal (7.70 CGPA)",
+                "short_desc": "B.Sc Computer Science (7.50 CGPA) • Rajeev Gandhi College • Python Certified.",
+                "link": "#experience",
+                "link_text": "View Education Details",
+                "is_external": False,
+                "badge_color": "amber"
+            }
         ]
     },
     "projects": [
@@ -45,7 +68,7 @@ PORTFOLIO_DATA = {
             "summary": (
                 "An end-to-end AI document intelligence platform built with Next.js 14 App Router, React, and Node.js. "
                 "Enables multi-format document ingestion (PDF, DOCX, TXT, CSV) with binary magic-byte validation, "
-                "768-dimensional Google Gemini vector search indexing in PostgreSQL via pgvector, and grounded conversational "
+                "vector search indexing in PostgreSQL via pgvector, and grounded conversational "
                 "assistance with verifiable page-level citations."
             ),
             "preview_image": "/assets/images/documind-preview.svg",
@@ -53,8 +76,8 @@ PORTFOLIO_DATA = {
             "github_url": "https://github.com/shadow190202/DocuMind",
             "highlights": [
                 "Architected a full-stack document intelligence platform using Next.js 14 App Router, React, and Node.js, enabling multi-format document ingestion (PDF, DOCX, TXT, CSV) with binary magic-byte validation and physical page attribution.",
-                "Implemented an end-to-end vector search pipeline generating 768-dimensional embeddings via Google Gemini (gemini-embedding-001) and indexing chunks in PostgreSQL using pgvector cosine distance search (<=>) with Drizzle ORM.",
-                "Engineered a grounded conversational RAG assistant using Google Gemini 2.5 Flash, featuring token-budgeted context assembly, verifiable page-level source citations, and hallucination-resistant fallback responses.",
+                "Implemented an end-to-end vector search pipeline and indexed chunks in PostgreSQL using pgvector cosine distance search (<=>) with Drizzle ORM.",
+                "Engineered a grounded conversational RAG assistant featuring token-budgeted context assembly, verifiable page-level source citations, and hallucination-resistant fallback responses.",
                 "Built automated document summarization (executive summaries, bullet points, key takeaways) with database caching to eliminate redundant AI calls, alongside structured side-by-side document comparison analytics.",
                 "Secured application with Clerk authentication, PostgreSQL server-side role-based access control (RBAC), multi-user document permissions (read, write, admin), IDOR protection, admin telemetry dashboard, and 570+ automated tests."
             ],
@@ -64,8 +87,6 @@ PORTFOLIO_DATA = {
                 "Node.js",
                 "PostgreSQL",
                 "pgvector",
-                "Google Gemini 2.5 Flash",
-                "gemini-embedding-001",
                 "Drizzle ORM",
                 "Docker",
                 "Clerk Auth",
@@ -73,13 +94,12 @@ PORTFOLIO_DATA = {
                 "Vercel"
             ],
             "architecture_specs": [
-                {"label": "Embedding Model", "value": "Google Gemini (gemini-embedding-001, 768-dim)"},
-                {"label": "Inference Engine", "value": "Google Gemini 2.5 Flash"},
-                {"label": "Vector Database", "value": "PostgreSQL with pgvector extension"},
+                {"label": "Architecture Type", "value": "Full-Stack Retrieval-Augmented Generation (RAG)"},
+                {"label": "Vector Database", "value": "PostgreSQL with pgvector cosine distance indexing"},
                 {"label": "ORM & Migrations", "value": "Drizzle ORM"},
                 {"label": "Ingestion Formats", "value": "PDF, DOCX, TXT, CSV with Magic-Byte validation"},
                 {"label": "Security Model", "value": "Clerk Auth + Server-side RBAC & IDOR Guard"},
-                {"label": "Test Coverage", "value": "570+ Unit & E2E Automated Tests Passed"}
+                {"label": "Testing & Reliability", "value": "570+ Unit & E2E Automated Tests Passed"}
             ]
         },
         {
@@ -126,14 +146,13 @@ PORTFOLIO_DATA = {
     ],
     "skills": [
         {
-            "group": "AI & Generative AI",
+            "group": "AI & Machine Learning",
             "icon": "brain",
             "skills": [
                 "Retrieval-Augmented Generation (RAG)",
-                "Vector Embeddings (768-dim)",
-                "Google Gemini API (2.5 Flash)",
                 "Semantic & Cosine Search (<=>)",
-                "Document Summarization & Analytics"
+                "Document Summarization & Analytics",
+                "Full-Stack AI Architecture"
             ]
         },
         {

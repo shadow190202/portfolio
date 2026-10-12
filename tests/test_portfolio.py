@@ -123,6 +123,40 @@ class TestPortfolioApp(unittest.TestCase):
         self.assertEqual(expenses_response.status_code, 200)
         self.assertIn("image/svg", expenses_response.headers["content-type"])
 
+    def test_user_theme_and_content_customizations(self):
+        """Verify the user's custom requirements:
+        1. 'Powered by' badge replaced with Shreyansh Sahu.
+        2. 'Quality Assurance' badge removed.
+        3. 3 hero boxes contain DocuMind, Expenses Tracker, and Education details in short.
+        4. Vector Embeddings (768-dim) and Google Gemini API (2.5 Flash) removed from skills.
+        5. Titanium platinum theme and reveal-on-scroll animations applied.
+        """
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+        html = response.text
+
+        # 1. Badge replaced to Shreyansh Sahu
+        self.assertIn("Full-Stack Engineer", html)
+        self.assertIn("Shreyansh Sahu", html)
+
+        # 2. Quality Assurance removed
+        self.assertNotIn("Quality Assurance", html)
+
+        # 3. 3 hero boxes
+        self.assertIn("Featured Live App", html)
+        self.assertIn("DocuMind", html)
+        self.assertIn("Expenses Tracker", html)
+        self.assertIn("Academic Qualifications", html)
+        self.assertIn("MCA • LNCT Bhopal", html)
+
+        # 4. Removed skills
+        self.assertNotIn("Vector Embeddings (768-dim)", html)
+        self.assertNotIn("Google Gemini API (2.5 Flash)", html)
+
+        # 5. Scroll reveal and Titanium theme classes
+        self.assertIn("reveal-on-scroll", html)
+        self.assertIn("gradient-text-titanium", html)
+
 
 if __name__ == "__main__":
     unittest.main()
