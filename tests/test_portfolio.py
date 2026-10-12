@@ -157,6 +157,32 @@ class TestPortfolioApp(unittest.TestCase):
         self.assertIn("reveal-on-scroll", html)
         self.assertIn("gradient-text-titanium", html)
 
+    def test_preloader_curtain_and_contact_button_visibility(self):
+        """Verify preloader curtain is integrated and Contact Me button has proper contrast."""
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+        html = response.text
+
+        # Preloader curtain elements
+        self.assertIn("preloader-curtain", html)
+        self.assertIn("preloader-word", html)
+        self.assertIn("Welcome", html)
+        self.assertIn("Shreyansh Sahu", html)
+        self.assertIn("Portfolio", html)
+
+        # Contact Me button contrast check (btn-primary shouldn't be overridden with text-white)
+        self.assertIn("Contact Me", html)
+        self.assertIn("btn-primary", html)
+        # Verify nav contact button does not have text-white
+        self.assertIn('class="btn-primary px-5 py-2 rounded-xl text-sm font-semibold"', html)
+
+        # CSS checks
+        css_response = self.client.get("/static/css/style.css")
+        self.assertEqual(css_response.status_code, 200)
+        self.assertIn("#preloader-curtain", css_response.text)
+        self.assertIn("curtain-lift", css_response.text)
+        self.assertIn(".btn-primary", css_response.text)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -3,12 +3,118 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
   initMobileMenu();
   initContactForm();
   initScrollSpy();
   initCardAmbientGlow();
   initScrollReveal();
 });
+
+/**
+ * Multilingual Preloader Curtain & Language Transition Animation
+ */
+function initPreloader() {
+  const curtain = document.getElementById('preloader-curtain');
+  if (!curtain) {
+    document.body.classList.remove('overflow-hidden');
+    return;
+  }
+
+  const content = document.getElementById('preloader-content');
+  const wordEl = document.getElementById('preloader-word');
+  const langEl = document.getElementById('preloader-lang-indicator');
+  const progressBar = document.getElementById('preloader-progress-bar');
+  const skipBtn = document.getElementById('preloader-skip');
+
+  // Multilingual greeting iterations
+  const greetings = [
+    { text: 'Welcome', lang: 'English' },
+    { text: 'नमस्ते', lang: 'Hindi' },
+    { text: 'Bienvenue', lang: 'French' },
+    { text: 'ようこそ', lang: 'Japanese' },
+    { text: 'Bienvenido', lang: 'Spanish' },
+    { text: 'Willkommen', lang: 'German' },
+    { text: 'Benvenuto', lang: 'Italian' },
+    { text: 'Welcome', lang: 'English' }
+  ];
+
+  let currentIndex = 0;
+  let isDismissed = false;
+  let timer = null;
+
+  function dismissCurtain() {
+    if (isDismissed) return;
+    isDismissed = true;
+    if (timer) clearTimeout(timer);
+
+    if (progressBar) progressBar.style.width = '100%';
+    if (content) content.classList.add('fade-out');
+
+    setTimeout(() => {
+      curtain.classList.add('curtain-lift');
+      document.body.classList.remove('overflow-hidden');
+
+      setTimeout(() => {
+        curtain.style.display = 'none';
+      }, 850);
+    }, 180);
+  }
+
+  // Interactive skip listeners
+  curtain.addEventListener('click', dismissCurtain);
+  if (skipBtn) skipBtn.addEventListener('click', dismissCurtain);
+  window.addEventListener('keydown', () => {
+    if (!isDismissed) dismissCurtain();
+  }, { once: true });
+
+  // Reduced motion preference support
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    dismissCurtain();
+    return;
+  }
+
+  // Safety fallback
+  const safetyTimeout = setTimeout(() => {
+    dismissCurtain();
+  }, 3800);
+
+  function cycleNextGreeting() {
+    if (isDismissed) return;
+
+    currentIndex++;
+    if (currentIndex >= greetings.length) {
+      clearTimeout(safetyTimeout);
+      dismissCurtain();
+      return;
+    }
+
+    const next = greetings[currentIndex];
+    const progress = Math.min(100, Math.round(((currentIndex + 1) / greetings.length) * 100));
+    if (progressBar) progressBar.style.width = `${progress}%`;
+
+    if (wordEl) {
+      wordEl.classList.add('word-exit');
+
+      setTimeout(() => {
+        if (isDismissed) return;
+        wordEl.textContent = next.text;
+        if (langEl) langEl.textContent = next.lang;
+
+        wordEl.classList.remove('word-exit');
+        wordEl.classList.add('word-enter');
+        void wordEl.offsetWidth; // Force CSS reflow
+        wordEl.classList.remove('word-enter');
+      }, 90);
+    }
+
+    timer = setTimeout(cycleNextGreeting, 270);
+  }
+
+  // Initialize progress and start sequence
+  if (progressBar) progressBar.style.width = `${Math.round((1 / greetings.length) * 100)}%`;
+  timer = setTimeout(cycleNextGreeting, 320);
+}
 
 /**
  * Scroll-Driven Reveal Animations

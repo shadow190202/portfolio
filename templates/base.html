@@ -43,8 +43,11 @@
   <!-- Custom Theme Stylesheet (Dark Slate Texture Theme) -->
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body class="min-h-screen text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-black">
+<body class="min-h-screen text-slate-100 flex flex-col selection:bg-slate-200 selection:text-black overflow-hidden">
   
+  <!-- Preloader Curtain with Multilingual Greeting Animation -->
+  {% include "components/preloader.html" %}
+
   <!-- Navigation Header -->
   {% include "components/nav.html" %}
 
