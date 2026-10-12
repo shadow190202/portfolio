@@ -37,17 +37,18 @@ e:\portfolio\
 │       └── main.js            # Smooth scroll, active scrollspy & AJAX contact form
 ├── templates/
 │   ├── base.html              # Base layout with meta & Tailwind CSS
-│   ├── index.html             # Master index view
+│   ├── index.html             # Master index view (compact highlights)
+│   ├── projects_page.html     # Dedicated in-depth projects & architecture page
 │   └── components/
-│       ├── nav.html           # Glassmorphism header & mobile navigation
+│       ├── nav.html           # Glassmorphism header & multi-page navigation
 │       ├── hero.html          # Hero section with portrait & statistics
-│       ├── projects.html      # Flagship & secondary project cards
+│       ├── projects.html      # Compact projects showcase cards with detail links
 │       ├── skills.html        # Tech stack grid across 4 domains
 │       ├── experience.html    # Career & academic milestones timeline
 │       ├── contact.html       # Contact info & interactive AJAX form
 │       └── footer.html        # Footer with navigation & status indicator
 ├── tests/
-│   └── test_portfolio.py      # Automated endpoint and rendering test suite
+│   └── test_portfolio.py      # Automated endpoint and rendering test suite (8 tests)
 ├── requirements.txt           # Python package dependencies
 ├── run.py                     # Convenience runner script (python run.py)
 └── README.md
