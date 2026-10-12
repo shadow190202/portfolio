@@ -1,6 +1,6 @@
 """Portfolio content configuration for Shreyansh Sahu.
 
-Centralized dataset with personal details, flagship DocuMind project, skills, and experience.
+Centralized dataset with personal details, projects (DocuMind & Expenses Tracker), skills, and experience.
 """
 
 PORTFOLIO_DATA = {
@@ -10,7 +10,7 @@ PORTFOLIO_DATA = {
         "title": "Full-Stack Web Developer & AI Engineer",
         "subtitle": "MCA Student • Specialized in Next.js, PostgreSQL (pgvector) & Google Gemini AI",
         "badge": "Available for Full-Stack & AI Engineering Roles",
-        "tagline": "Building intelligent, scalable web applications and production-ready RAG workflows.",
+        "tagline": "Building intelligent, scalable web applications, financial dashboards, and production RAG workflows.",
         "bio": (
             "Motivated Full-Stack Web Developer and MCA student with hands-on experience building scalable web applications "
             "and AI-powered solutions using Next.js, React, Node.js, PostgreSQL (pgvector), and Google Gemini AI. "
@@ -41,7 +41,7 @@ PORTFOLIO_DATA = {
             "title": "DocuMind — AI Document Intelligence & Knowledge Assistant",
             "category": "AI / Full-Stack Enterprise Platform",
             "featured": True,
-            "badge": "Flagship Production System",
+            "badge": "Featured AI System",
             "summary": (
                 "An end-to-end AI document intelligence platform built with Next.js 14 App Router, React, and Node.js. "
                 "Enables multi-format document ingestion (PDF, DOCX, TXT, CSV) with binary magic-byte validation, "
@@ -80,6 +80,47 @@ PORTFOLIO_DATA = {
                 {"label": "Ingestion Formats", "value": "PDF, DOCX, TXT, CSV with Magic-Byte validation"},
                 {"label": "Security Model", "value": "Clerk Auth + Server-side RBAC & IDOR Guard"},
                 {"label": "Test Coverage", "value": "570+ Unit & E2E Automated Tests Passed"}
+            ]
+        },
+        {
+            "id": "expenses-tracker",
+            "title": "Expenses Tracker — Personal Budgeting & Financial Analytics",
+            "category": "Full-Stack Web Application / Financial Tech",
+            "featured": True,
+            "badge": "Full-Stack Dashboard",
+            "summary": (
+                "A modern, full-stack personal budgeting & expense management platform built with Next.js 14 App Router, "
+                "PostgreSQL, Drizzle ORM, Clerk Auth, and Recharts. Empowers users to set category budgets, record expenses in real-time, "
+                "and visualize spending trends through interactive analytics."
+            ),
+            "preview_image": "/assets/images/expenses-tracker-preview.svg",
+            "live_url": "https://github.com/shadow190202/Expenses-Tracker",
+            "github_url": "https://github.com/shadow190202/Expenses-Tracker",
+            "highlights": [
+                "Built an end-to-end personal finance management platform using Next.js 14 App Router, React, and Tailwind CSS with a clean, responsive dashboard layout.",
+                "Designed relational database models in PostgreSQL with Drizzle ORM, orchestrating automatic schema migrations with drizzle-kit.",
+                "Implemented secure user authentication and multi-tenant session isolation using Clerk Auth to ensure individual budget and transaction privacy.",
+                "Integrated Recharts interactive visual analytics, generating dynamic bar charts comparing Budget Allocated vs. Total Actual Spend.",
+                "Engineered complete CRUD workflows for budget caps and dynamic expense tracking with real-time UI state updates and deletion refreshes."
+            ],
+            "tags": [
+                "Next.js 14 (App Router)",
+                "React",
+                "PostgreSQL",
+                "Drizzle ORM",
+                "drizzle-kit",
+                "Clerk Auth",
+                "Tailwind CSS",
+                "Recharts",
+                "Vercel"
+            ],
+            "architecture_specs": [
+                {"label": "Frontend Framework", "value": "Next.js 14 App Router (React)"},
+                {"label": "Authentication", "value": "Clerk Multi-Tenant User Sessions"},
+                {"label": "Database", "value": "PostgreSQL (Neon / Cloud SQL)"},
+                {"label": "Data Access Layer", "value": "Drizzle ORM + Schema Migrations"},
+                {"label": "Analytics Visuals", "value": "Recharts Dynamic Spending Charts"},
+                {"label": "Component Library", "value": "Modular Tailwind CSS Architecture"}
             ]
         }
     ],
