@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between h-20">
       
       <!-- Logo / Brand -->
-      <a href="#hero" class="flex items-center gap-3 group">
+      <a href="/" class="flex items-center gap-3 group">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-500 p-[1.5px] shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300">
           <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-heading font-extrabold text-cyan-400 text-sm tracking-wider">
             {{ data.profile.initials }}
@@ -20,12 +20,16 @@
       </a>
 
       <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="#hero" class="desktop-nav-link text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">Home</a>
-        <a href="#projects" class="desktop-nav-link text-slate-300 hover:text-cyan-300 transition-colors">Projects</a>
-        <a href="#skills" class="desktop-nav-link text-slate-300 hover:text-cyan-300 transition-colors">Skills</a>
-        <a href="#experience" class="desktop-nav-link text-slate-300 hover:text-cyan-300 transition-colors">Experience &amp; Education</a>
-        <a href="#contact" class="desktop-nav-link text-slate-300 hover:text-cyan-300 transition-colors">Contact</a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a href="/#hero" class="desktop-nav-link text-slate-300 hover:text-cyan-300 transition-colors">Home</a>
+        <a href="/#projects" class="desktop-nav-link text-slate-300 hover:text-cyan-300 transition-colors">Projects</a>
+        <a href="/projects" class="desktop-nav-link {% if not is_home %}text-cyan-400 font-semibold{% else %}text-slate-300{% endif %} hover:text-cyan-300 transition-colors flex items-center gap-1.5">
+          <span>Detailed Projects</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">Deep Dive</span>
+        </a>
+        <a href="/#skills" class="desktop-nav-link text-slate-300 hover:text-cyan-300 transition-colors">Skills</a>
+        <a href="/#experience" class="desktop-nav-link text-slate-300 hover:text-cyan-300 transition-colors">Experience</a>
+        <a href="/#contact" class="desktop-nav-link text-slate-300 hover:text-cyan-300 transition-colors">Contact</a>
       </nav>
 
       <!-- Action Button & Status -->
@@ -34,7 +38,7 @@
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot"></span>
           <span>Open for Roles</span>
         </div>
-        <a href="#contact" class="btn-primary px-5 py-2 rounded-xl text-sm font-semibold text-white">
+        <a href="/#contact" class="btn-primary px-5 py-2 rounded-xl text-sm font-semibold text-white">
           Contact Me
         </a>
       </div>
@@ -53,17 +57,18 @@
 
   <!-- Mobile Drawer Menu -->
   <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-slate-950/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3">
-    <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-cyan-400 hover:bg-slate-800/50">Home</a>
-    <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-cyan-300 hover:bg-slate-800/50">Projects</a>
-    <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-cyan-300 hover:bg-slate-800/50">Skills</a>
-    <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-cyan-300 hover:bg-slate-800/50">Experience &amp; Education</a>
-    <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-cyan-300 hover:bg-slate-800/50">Contact</a>
+    <a href="/#hero" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-cyan-300 hover:bg-slate-800/50">Home</a>
+    <a href="/#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-cyan-300 hover:bg-slate-800/50">Projects</a>
+    <a href="/projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-cyan-400 hover:text-cyan-300 hover:bg-slate-800/50">Detailed Projects Page</a>
+    <a href="/#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-cyan-300 hover:bg-slate-800/50">Skills</a>
+    <a href="/#experience" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-cyan-300 hover:bg-slate-800/50">Experience</a>
+    <a href="/#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-cyan-300 hover:bg-slate-800/50">Contact</a>
     <div class="pt-3 border-t border-white/10 flex flex-col gap-3">
       <div class="flex items-center gap-2 px-3 py-1.5 rounded-full badge-status text-xs font-semibold w-max">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot"></span>
         <span>Open for Roles</span>
       </div>
-      <a href="#contact" class="mobile-nav-link btn-primary text-center px-4 py-2.5 rounded-xl text-sm font-semibold text-white">
+      <a href="/#contact" class="mobile-nav-link btn-primary text-center px-4 py-2.5 rounded-xl text-sm font-semibold text-white">
         Get in Touch
       </a>
     </div>

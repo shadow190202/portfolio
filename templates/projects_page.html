@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="pt-32 pb-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Top Breadcrumb & Navigation -->
+    <div class="mb-8 flex items-center justify-between">
+      <a href="/" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-400 hover:text-cyan-400 transition-colors group">
+        <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Back to Overview</span>
+      </a>
+
+      <div class="flex items-center gap-2 text-xs font-mono text-slate-500">
+        <span>Projects Catalog</span>
+        <span>/</span>
+        <span class="text-cyan-400 font-semibold">Detailed View</span>
+      </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-cyan text-xs font-semibold mb-4">
+        <span>COMPLETE ARCHITECTURE SPECIFICATIONS</span>
+      </div>
+      <h1 class="font-heading text-4xl sm:text-5xl font-extrabold text-white mb-4">
+        Engineering Projects <span class="gradient-text-cyan-indigo">Deep Dive</span>
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed mb-8">
+        Detailed technical case studies showcasing production implementations, RAG pipelines, database schemas, and telemetry metrics.
+      </p>
+
+      <!-- Quick Jump Navigation Pills -->
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <span class="text-xs font-mono text-slate-500 uppercase tracking-wider">Jump To:</span>
+        {% for project in data.projects %}
+        <a href="#{{ project.id }}" class="px-3.5 py-1.5 rounded-xl glass-panel text-xs font-semibold text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full {% if project.id == 'documind' %}bg-cyan-400{% else %}bg-emerald-400{% endif %}"></span>
+          <span>{{ project.title.split('—')[0].strip() }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Detailed Projects List -->
+    <div class="space-y-24">
+      {% for project in data.projects %}
+      <article id="{{ project.id }}" class="scroll-mt-28 glass-panel p-6 sm:p-10 border-white/10 hover:border-cyan-500/30 transition-all duration-300 relative overflow-hidden">
+        
+        <!-- Ambient Radial Glow -->
+        <div class="absolute -top-32 {% if loop.index % 2 == 1 %}-right-32 bg-cyan-500/10{% else %}-left-32 bg-emerald-500/10{% endif %} w-96 h-96 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Top Header & Badges -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="px-3 py-1 rounded-full {% if project.id == 'documind' %}bg-indigo-500/15 border-indigo-500/30 text-indigo-300{% else %}bg-emerald-500/15 border-emerald-500/30 text-emerald-300{% endif %} border text-xs font-bold uppercase tracking-wider">
+              {{ project.badge }}
+            </span>
+            <span class="text-xs text-slate-400 font-mono">{{ project.category }}</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            {% if project.live_url and project.live_url != project.github_url %}
+            <a href="{{ project.live_url }}" target="_blank" rel="noopener noreferrer" class="btn-primary px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-white flex items-center gap-2">
+              <span>Launch Live App</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            {% endif %}
+
+            <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn-secondary px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-white flex items-center gap-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              <span>GitHub Repository</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Title & Summary -->
+        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-4">
+          {{ project.title }}
+        </h2>
+
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 max-w-4xl">
+          {{ project.summary }}
+        </p>
+
+        <!-- Full Interactive Mockup Illustration -->
+        <div class="mb-10 rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-slate-950/80">
+          <img 
+            src="{{ project.preview_image }}" 
+            alt="{{ project.title }} Interface" 
+            class="w-full h-auto block"
+            loading="lazy"
+          >
+        </div>
+
+        <!-- Comprehensive Key Engineering Highlights -->
+        <div class="mb-12">
+          <h3 class="font-heading font-bold text-xl text-white mb-6 flex items-center gap-2.5">
+            <span class="w-3 h-3 rounded-full {% if project.id == 'documind' %}bg-cyan-400{% else %}bg-emerald-400{% endif %}"></span>
+            <span>Comprehensive Implementation Highlights</span>
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {% for bullet in project.highlights %}
+            <div class="glass-panel p-5 card-interactive flex items-start gap-4 bg-slate-900/50 border-white/5">
+              <div class="w-7 h-7 rounded-lg {% if project.id == 'documind' %}bg-cyan-500/15 border-cyan-500/30 text-cyan-400{% else %}bg-emerald-500/15 border-emerald-500/30 text-emerald-400{% endif %} border flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-xs font-mono font-bold">{{ loop.index }}</span>
+              </div>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                {{ bullet }}
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Technical Architecture & Telemetry Specs -->
+        <div class="mb-10 pt-8 border-t border-white/10">
+          <h3 class="font-heading font-bold text-sm uppercase tracking-wider text-slate-400 mb-6 font-mono">
+            System Specifications &amp; Architectural Matrix
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for spec in project.architecture_specs %}
+            <div class="p-4 rounded-xl bg-slate-950/70 border border-white/5 flex flex-col justify-between">
+              <div class="text-[11px] font-mono {% if project.id == 'documind' %}text-cyan-400{% else %}text-emerald-400{% endif %} uppercase tracking-wider mb-1.5">{{ spec.label }}</div>
+              <div class="text-xs font-semibold text-slate-200">{{ spec.value }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Full Tags Cloud -->
+        <div class="pt-6 border-t border-white/10 flex flex-wrap items-center gap-2">
+          <span class="text-xs font-mono text-slate-500 mr-2">Technologies:</span>
+          {% for tag in project.tags %}
+          <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800/80 text-slate-300 border border-white/5">
+            {{ tag }}
+          </span>
+          {% endfor %}
+        </div>
+
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- Bottom Contact Callout -->
+    <div class="mt-20 glass-panel p-8 sm:p-12 text-center max-w-4xl mx-auto border-cyan-500/20 bg-gradient-to-b from-slate-900/80 to-slate-950/90">
+      <h3 class="font-heading font-bold text-2xl sm:text-3xl text-white mb-4">
+        Ready to Discuss Technical Solutions?
+      </h3>
+      <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8">
+        Whether you have questions about these architectures or want to discuss full-stack &amp; AI opportunities, let's talk.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="/#contact" class="btn-primary px-7 py-3 rounded-xl text-sm font-semibold text-white">
+          Get in Touch
+        </a>
+        <a href="/" class="btn-secondary px-6 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:text-white">
+          Back to Overview
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

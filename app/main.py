@@ -48,6 +48,22 @@ async def home(request: Request):
         context={
             "data": PORTFOLIO_DATA,
             "year": datetime.now(timezone.utc).year,
+            "is_home": True,
+        },
+    )
+
+
+@app.get("/projects", response_class=HTMLResponse)
+@app.get("/project", response_class=HTMLResponse)
+async def projects_detail_page(request: Request):
+    """Render the detailed projects page displaying full architectures and telemetry."""
+    return templates.TemplateResponse(
+        request=request,
+        name="projects_page.html",
+        context={
+            "data": PORTFOLIO_DATA,
+            "year": datetime.now(timezone.utc).year,
+            "is_home": False,
         },
     )
 

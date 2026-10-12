@@ -25,22 +25,33 @@ class TestPortfolioApp(unittest.TestCase):
         self.assertEqual(data["status"], "healthy")
         self.assertIn("timestamp", data)
 
-    def test_home_page_renders_shreyansh_details(self):
-        """Verify home page renders HTML with Shreyansh Sahu's exact details and projects."""
+    def test_home_page_renders_compact_projects_and_links(self):
+        """Verify home page renders HTML with compact project cards and link to /projects."""
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
         self.assertIn("text/html", response.headers["content-type"])
         html = response.text
         self.assertIn("Shreyansh Sahu", html)
-        self.assertIn("shreyanshsahu1319@gmail.com", html)
-        self.assertIn("+91-9752387516", html)
-        self.assertIn("Indore, Madhya Pradesh", html)
         self.assertIn("DocuMind", html)
         self.assertIn("Expenses Tracker", html)
-        self.assertIn("Ypsilon IT Solutions", html)
-        self.assertIn("Lakshmi Narain College of Technology", html)
-        self.assertIn("7.70", html)
-        self.assertIn("570+ Automated Tests Passed", html)
+        self.assertIn("/projects", html)
+        self.assertIn("View All in Full Detail", html)
+
+    def test_detailed_projects_page_renders(self):
+        """Verify /projects and /project routes render full case studies and architectures."""
+        for route in ("/projects", "/project"):
+            response = self.client.get(route)
+            self.assertEqual(response.status_code, 200)
+            self.assertIn("text/html", response.headers["content-type"])
+            html = response.text
+            self.assertIn("Engineering Projects", html)
+            self.assertIn("Deep Dive", html)
+            self.assertIn("DocuMind", html)
+            self.assertIn("Expenses Tracker", html)
+            self.assertIn("Comprehensive Implementation Highlights", html)
+            self.assertIn("System Specifications &amp; Architectural Matrix", html)
+            self.assertIn("documind-preview.svg", html)
+            self.assertIn("expenses-tracker-preview.svg", html)
 
     def test_css_references_hero_background_theme(self):
         """Verify style.css embeds hero-background-img.jpg as theme background."""
@@ -48,7 +59,7 @@ class TestPortfolioApp(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("hero-background-img.jpg", response.text)
 
-    def test_projects_endpoint_both_repositories(self):
+    def test_projects_api_endpoint(self):
         """Verify /api/projects returns both DocuMind and Expenses Tracker projects."""
         response = self.client.get("/api/projects")
         self.assertEqual(response.status_code, 200)
@@ -70,16 +81,16 @@ class TestPortfolioApp(unittest.TestCase):
     def test_contact_submission_success(self):
         """Verify contact form submission handles valid input."""
         payload = {
-            "name": "Hiring Manager",
-            "email": "hiring@innovatech.com",
+            "name": "Engineering Lead",
+            "email": "lead@company.com",
             "subject": "Full-Stack Web Developer Opportunity",
-            "message": "We reviewed your DocuMind and Expenses Tracker projects and would like to invite you for an interview."
+            "message": "We reviewed your DocuMind and Expenses Tracker detailed case studies."
         }
         response = self.client.post("/api/contact", data=payload)
         self.assertEqual(response.status_code, 200)
         data = response.json()
         self.assertTrue(data["success"])
-        self.assertIn("Thank you, Hiring Manager", data["message"])
+        self.assertIn("Thank you, Engineering Lead", data["message"])
 
     def test_contact_submission_invalid_email(self):
         """Verify contact form rejects invalid email addresses."""

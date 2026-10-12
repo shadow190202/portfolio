@@ -1,143 +1,132 @@
-<section id="projects" class="py-24 relative">
+<section id="projects" class="py-20 relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
       <div>
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-cyan text-xs font-semibold mb-3">
-          <span>FEATURED PRODUCTION PROJECTS</span>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-cyan text-xs font-semibold mb-3">
+          <span>SELECTED WORK</span>
         </div>
-        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
-          Featured <span class="gradient-text-cyan-indigo">Engineering Work</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">
+          Featured <span class="gradient-text-cyan-indigo">Projects</span>
         </h2>
       </div>
-      <p class="text-slate-400 text-sm sm:text-base max-w-md">
-        Architectural deep dives into production RAG systems, PostgreSQL vector search, and full-stack financial analytics platforms.
-      </p>
+      
+      <div class="flex items-center gap-4">
+        <a href="/projects" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs sm:text-sm font-semibold text-cyan-400 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/60 transition-all shadow-md shadow-cyan-500/10 group">
+          <span>View All in Full Detail</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
     </div>
 
-    <!-- Projects List -->
-    <div class="space-y-16">
+    <!-- Compact Projects Grid (2 Columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {% for project in data.projects %}
-      <div class="glass-panel p-6 sm:p-10 border-cyan-500/30 relative overflow-hidden group">
-        <!-- Ambient Glow Behind Card -->
-        <div class="absolute -top-32 {% if loop.index % 2 == 1 %}-right-32 bg-cyan-500/10{% else %}-left-32 bg-emerald-500/10{% endif %} w-96 h-96 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
-          <!-- Column 1: Interactive SVG Dashboard Mockup -->
-          <div class="lg:col-span-7 {% if loop.index % 2 == 0 %}lg:order-2{% else %}order-2 lg:order-1{% endif %}">
-            <div class="rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-slate-950/80 transition-transform duration-500 group-hover:scale-[1.01]">
-              <img 
-                src="{{ project.preview_image }}" 
-                alt="{{ project.title }}" 
-                class="w-full h-auto block"
-                loading="lazy"
-              >
-            </div>
-            
-            <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400 font-mono">
-              <span class="flex items-center gap-1.5 {% if project.id == 'documind' %}text-emerald-400{% else %}text-cyan-400{% endif %} font-semibold">
-                <span class="w-2 h-2 rounded-full {% if project.id == 'documind' %}bg-emerald-400{% else %}bg-cyan-400{% endif %}"></span>
-                {% if project.id == 'documind' %}
-                  Quality Standard: 570+ Automated Tests Passed
-                {% else %}
-                  Architecture: Next.js 14 • Drizzle ORM • PostgreSQL
-                {% endif %}
-              </span>
-              <span>Open Source on GitHub • Clean Architecture</span>
-            </div>
-          </div>
-
-          <!-- Column 2: Project Overview & Core Highlights -->
-          <div class="lg:col-span-5 {% if loop.index % 2 == 0 %}lg:order-1{% else %}order-1 lg:order-2{% endif %} flex flex-col items-start">
-            
-            <div class="flex items-center gap-2.5 mb-4">
-              <span class="px-3 py-1 rounded-full {% if project.id == 'documind' %}bg-indigo-500/15 border-indigo-500/30 text-indigo-300{% else %}bg-emerald-500/15 border-emerald-500/30 text-emerald-300{% endif %} border text-xs font-bold uppercase tracking-wider">
+      <div class="glass-panel p-6 sm:p-7 card-interactive flex flex-col justify-between border-white/10 hover:border-cyan-500/40 transition-all duration-300 group">
+        
+        <div>
+          <!-- Compact Thumbnail / Preview -->
+          <div class="relative rounded-xl overflow-hidden border border-white/10 bg-slate-950/80 mb-5 aspect-[16/9]">
+            <img 
+              src="{{ project.preview_image }}" 
+              alt="{{ project.title }}" 
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+              loading="lazy"
+            >
+            <div class="absolute top-3 left-3">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold uppercase tracking-wider backdrop-blur-md {% if project.id == 'documind' %}bg-indigo-950/80 text-indigo-300 border border-indigo-500/30{% else %}bg-emerald-950/80 text-emerald-300 border border-emerald-500/30{% endif %}">
                 {{ project.badge }}
               </span>
-              <span class="text-xs text-slate-400 font-mono">{{ project.category }}</span>
             </div>
-
-            <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-white mb-4">
-              {{ project.title }}
-            </h3>
-
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
-              {{ project.summary }}
-            </p>
-
-            <!-- Action Buttons -->
-            <div class="flex flex-wrap items-center gap-4 w-full mb-8">
-              {% if project.live_url and project.live_url != project.github_url %}
-              <a href="{{ project.live_url }}" target="_blank" rel="noopener noreferrer" class="btn-primary px-6 py-3 rounded-xl text-sm font-semibold text-white flex items-center gap-2 flex-grow sm:flex-grow-0 justify-center">
-                <span>Launch Live Demo</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-              {% endif %}
-
-              <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="{% if project.live_url and project.live_url != project.github_url %}btn-secondary{% else %}btn-primary{% endif %} px-5 py-3 rounded-xl text-sm font-semibold text-white flex items-center gap-2 flex-grow sm:flex-grow-0 justify-center">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-                </svg>
-                <span>GitHub Repository</span>
-              </a>
-            </div>
-
-            <!-- Technologies Tags -->
-            <div class="flex flex-wrap gap-2">
-              {% for tag in project.tags %}
-              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800/80 text-slate-300 border border-white/5">
-                {{ tag }}
+            <div class="absolute bottom-3 right-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono backdrop-blur-md bg-slate-950/80 text-slate-300 border border-white/10">
+                {% if project.id == 'documind' %}570+ Tests • 142ms{% else %}Drizzle + Recharts{% endif %}
               </span>
-              {% endfor %}
             </div>
-
           </div>
 
+          <!-- Project Title & Category -->
+          <div class="flex items-center justify-between gap-3 mb-2">
+            <span class="text-xs text-slate-400 font-mono">{{ project.category }}</span>
+          </div>
+
+          <h3 class="font-heading font-extrabold text-xl text-white mb-3 group-hover:text-cyan-300 transition-colors line-clamp-1">
+            {{ project.title }}
+          </h3>
+
+          <!-- Concise Summary -->
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-5 line-clamp-2">
+            {{ project.summary }}
+          </p>
+
+          <!-- Key Technology Tags (Top 4) -->
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            {% for tag in project.tags[:5] %}
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-900/80 text-slate-300 border border-white/5">
+              {{ tag }}
+            </span>
+            {% endfor %}
+            {% if project.tags|length > 5 %}
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800/40 text-slate-400">
+              +{{ project.tags|length - 5 }} more
+            </span>
+            {% endif %}
+          </div>
         </div>
 
-        <!-- Detailed Engineering Highlights -->
-        <div class="mt-12 pt-8 border-t border-white/10">
-          <h4 class="font-heading font-bold text-lg text-white mb-6 flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full {% if project.id == 'documind' %}bg-cyan-400{% else %}bg-emerald-400{% endif %}"></span>
-            <span>Key Engineering Highlights &amp; Features</span>
-          </h4>
+        <!-- Action Links & "View Details" Navigation -->
+        <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3 text-xs">
+            {% if project.live_url and project.live_url != project.github_url %}
+            <a href="{{ project.live_url }}" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-cyan-400 font-semibold flex items-center gap-1 transition-colors" title="Launch Demo">
+              <span>Live</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            {% endif %}
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {% for bullet in project.highlights %}
-            <div class="glass-panel p-5 card-interactive flex items-start gap-3.5 bg-slate-900/60">
-              <div class="w-6 h-6 rounded-lg {% if project.id == 'documind' %}bg-cyan-500/15 border-cyan-500/30 text-cyan-400{% else %}bg-emerald-500/15 border-emerald-500/30 text-emerald-400{% endif %} border flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span class="text-xs font-mono font-bold">{{ loop.index }}</span>
-              </div>
-              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                {{ bullet }}
-              </p>
-            </div>
-            {% endfor %}
+            <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-cyan-400 font-semibold flex items-center gap-1 transition-colors" title="Source Code">
+              <span>Code</span>
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </a>
           </div>
-        </div>
 
-        <!-- Technical Architecture Specifications -->
-        <div class="mt-10 pt-8 border-t border-white/10">
-          <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-slate-400 mb-6 font-mono">
-            System Specifications &amp; Stack Architecture
-          </h4>
-
-          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {% for spec in project.architecture_specs %}
-            <div class="p-4 rounded-xl bg-slate-950/70 border border-white/5">
-              <div class="text-[11px] font-mono {% if project.id == 'documind' %}text-cyan-400{% else %}text-emerald-400{% endif %} uppercase tracking-wider mb-1">{{ spec.label }}</div>
-              <div class="text-xs font-medium text-slate-200">{{ spec.value }}</div>
-            </div>
-            {% endfor %}
-          </div>
+          <!-- Direct Link to Detailed Page -->
+          <a href="/projects#{{ project.id }}" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/25 hover:bg-cyan-500/20 hover:border-cyan-500/50 flex items-center gap-1.5 transition-all group-hover:translate-x-0.5">
+            <span>View Details</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
 
       </div>
       {% endfor %}
+    </div>
+
+    <!-- Bottom Banner Linking to Detailed Page -->
+    <div class="mt-12 glass-panel p-6 sm:p-8 border-cyan-500/20 flex flex-col sm:flex-row items-center justify-between gap-6 bg-gradient-to-r from-slate-950/80 via-slate-900/60 to-slate-950/80">
+      <div>
+        <h4 class="font-heading font-bold text-lg text-white mb-1">
+          Want to inspect the complete architectures &amp; telemetry?
+        </h4>
+        <p class="text-xs sm:text-sm text-slate-400">
+          Explore complete vector pipelines, database schema models, test suites, and system specifications.
+        </p>
+      </div>
+
+      <a href="/projects" class="btn-primary px-6 py-3 rounded-xl text-xs sm:text-sm font-semibold text-white flex items-center gap-2 whitespace-nowrap flex-shrink-0">
+        <span>Explore All Projects in Detail</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
     </div>
 
   </div>
