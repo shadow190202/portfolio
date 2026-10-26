@@ -39,11 +39,11 @@ PORTFOLIO_DATA = {
                 "badge_color": "amber"
             },
             {
-                "tag": "Full-Stack Project",
+                "tag": "Featured Live App",
                 "title": "Expenses Tracker",
                 "short_desc": "Personal budget management with Next.js 14, Drizzle ORM, Clerk, and Recharts.",
-                "link": "https://github.com/shadow190202/Expenses-Tracker",
-                "link_text": "View on GitHub",
+                "link": "https://expenses-tracker-olive-chi.vercel.app",
+                "link_text": "Launch Live Demo",
                 "is_external": True,
                 "badge_color": "silver"
             },
@@ -114,7 +114,7 @@ PORTFOLIO_DATA = {
                 "and visualize spending trends through interactive analytics."
             ),
             "preview_image": "/assets/images/expenses-tracker-preview.svg",
-            "live_url": "https://github.com/shadow190202/Expenses-Tracker",
+            "live_url": "https://expenses-tracker-olive-chi.vercel.app",
             "github_url": "https://github.com/shadow190202/Expenses-Tracker",
             "highlights": [
                 "Built an end-to-end personal finance management platform using Next.js 14 App Router, React, and Tailwind CSS with a clean, responsive dashboard layout.",

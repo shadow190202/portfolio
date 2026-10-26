@@ -75,6 +75,7 @@ class TestPortfolioApp(unittest.TestCase):
         # Expenses-Tracker checks
         self.assertEqual(data["projects"][1]["id"], "expenses-tracker")
         self.assertEqual(data["projects"][1]["github_url"], "https://github.com/shadow190202/Expenses-Tracker")
+        self.assertEqual(data["projects"][1]["live_url"], "https://expenses-tracker-olive-chi.vercel.app")
         self.assertIn("Next.js 14 (App Router)", data["projects"][1]["tags"])
         self.assertIn("Recharts", data["projects"][1]["tags"])
 
